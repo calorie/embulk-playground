@@ -1,0 +1,28 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    embulk (0.9.24-java)
+      bundler (>= 1.10.6)
+      liquid (~> 4.0.0)
+      msgpack (~> 1.1.0)
+    embulk-filter-expand_json (0.6.0-java)
+    embulk-formatter-jsonl (0.1.4)
+      jrjackson (~> 0.2.8)
+    embulk-output-elasticsearch (0.5.0-java)
+    embulk-parser-jsonl (0.2.1)
+    jrjackson (0.2.9)
+    liquid (4.0.3)
+    msgpack (1.1.0-java)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  embulk (< 0.10)
+  embulk-filter-expand_json
+  embulk-formatter-jsonl
+  embulk-output-elasticsearch
+  embulk-parser-jsonl
+
+BUNDLED WITH
+   1.16.0
