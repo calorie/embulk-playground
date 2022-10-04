@@ -1,6 +1,6 @@
 in:
   type: file
-  path_prefix: ./json_payload.tsv
+  path_prefix: /embulk/config/json_payload.tsv
   parser:
     type: csv
     delimiter: "\t"

@@ -1,0 +1,6 @@
+timezone: Asia/Tokyo
+
++step1:
+  _env:
+    secret_gcp_credential: ${secret:gcp.credential}
+  sh>: docker-compose run --rm embulk /usr/local/bin/embulk run -b /embulk config/bq.yml.liquid

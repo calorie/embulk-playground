@@ -1,9 +1,15 @@
 version: "3"
 services:
   embulk:
+    platform: linux/amd64
     build:
       context: ./embulk
+      args:
+        - GITHUB_USER=${GITHUB_USER}
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
     working_dir: /embulk
+    environment:
+      - secret_gcp_credential
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
     expose:

@@ -1,5 +1,8 @@
 FROM openjdk:8-jre-slim-bullseye as build
 
+ARG GITHUB_USER
+ARG GITHUB_TOKEN
+
 RUN apt-get update -qq && apt-get install --no-install-recommends -y wget ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
@@ -11,13 +14,12 @@ WORKDIR /embulk
 
 COPY Gemfile /embulk/Gemfile
 COPY Gemfile.lock /embulk/Gemfile.lock
-COPY .bundle/config /embulk/.bundle/config
-RUN /usr/local/bin/embulk bundle
+RUN /usr/local/bin/embulk bundle config --local https://rubygems.pkg.github.com/st-tech ${GITHUB_USER}:${GITHUB_TOKEN}
+RUN /usr/local/bin/embulk bundle install --path .
 
 FROM gcr.io/distroless/java:8
 
 COPY --from=build /usr/local/bin/embulk /usr/local/bin/embulk
 COPY --from=build /embulk /embulk
 
-COPY json_payload.tsv /embulk/json_payload.tsv
-COPY tsv_to_es.yml /embulk/tsv_to_es.yml
+COPY config /embulk/config

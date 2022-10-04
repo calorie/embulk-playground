@@ -1,0 +1,8 @@
+in:
+  type: bigquery
+  project: wear-search-stg
+  keyfile:
+    content: '{{ env.secret_gcp_credential }}'
+  sql: "select 1"
+out:
+  type: stdout

@@ -1,7 +1,10 @@
-source 'https://rubygems.org/'
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 gem 'embulk', '< 0.10'
 gem 'embulk-filter-expand_json'
-gem 'embulk-formatter-jsonl'
-gem 'embulk-output-elasticsearch'
-gem 'embulk-parser-jsonl'
+gem 'embulk-input-bigquery'
+source 'https://rubygems.pkg.github.com/st-tech' do
+  gem 'embulk-output-elasticsearch'
+end
