@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-slim-bullseye as build
+FROM azul/zulu-openjdk-debian:8-jre as build
 
 ARG GITHUB_USER
 ARG GITHUB_TOKEN
